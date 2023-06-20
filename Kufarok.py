@@ -6,7 +6,7 @@ from aiogram import Bot, Dispatcher, executor, types
 import config
 
 
-TIMEOUT=3 #Задержка между проверками
+TIMEOUT=60 #Задержка между проверками
 
 
 logging.basicConfig(level=logging.INFO)
@@ -17,7 +17,7 @@ search_dict = {}
 
 @dp.message_handler(commands=['start'])
 async def start_message(message: types.message):
-    await message.answer("Привет, я написан радиком, для начала моей работы напиши команду /search и укажи что хочешь искать. Пример: /search Мозги радика")
+    await message.answer("Привет, я написан радиком, для начала моей работы напиши команду /search и укажи что хочешь искать. Пример: /search Мозги радика\n Бот показывает лишь новые поступающие предложения")
 
 @dp.message_handler(commands=['search'])
 async def search(message : types.message):  
@@ -25,9 +25,12 @@ async def search(message : types.message):
         search_dict[message.from_id].close()
         search_dict.pop(message.from_id)
     except:
-        await message.answer("Какая-то ошибка, кажется я сломался(((((")
-    search_dict[message.from_id] = checking(message)
-    await search_dict[message.from_id]
+        pass
+    if (message.text=="/search"):
+        await message.answer("Вы не написали тему для поиска") 
+    else:
+        search_dict[message.from_id] = checking(message)
+        await search_dict[message.from_id]
 
    
 async def checking(message):
@@ -41,11 +44,13 @@ async def checking(message):
             product = soup.find('div', class_='styles_cards___qpff').find('a', class_="styles_wrapper__yaLfq").find('div', class_='styles_content__BDDGV')
             price=product.find('div',class_='styles_top__HNf3a').find('p',class_='styles_price__9JZaB').find('span').text
             name=product.find('h3',class_='styles_title__ARIVF').text
+            image =soup.find('div',class_="styles_container__dR7XZ").find('img')['data-src']
             url = soup.find('div', class_='styles_cards___qpff').find('a', class_="styles_wrapper__yaLfq").get('href')
             url = url[0:35]
             if not (url==last_item):
                 last_item=url
-                await message.answer("Название: "+name+"\n Цена "+price+"\n"+url)
+                print(url)
+                await message.answer(image+"\nНазвание: "+name+"\nЦена "+price+"\n"+url)
             await asyncio.sleep(TIMEOUT)
         
 
