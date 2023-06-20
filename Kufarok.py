@@ -41,12 +41,18 @@ async def checking(message):
         page = requests.get("https://www.kufar.by/l?cmp=0&query="+tag+"&sort=lst.d")
         if (page.status_code==200):
             soup = BeautifulSoup(page.text, "html.parser")
-            product = soup.find('div', class_='styles_cards___qpff').find('a', class_="styles_wrapper__yaLfq").find('div', class_='styles_content__BDDGV')
-            price=product.find('div',class_='styles_top__HNf3a').find('p',class_='styles_price__9JZaB').find('span').text
-            name=product.find('h3',class_='styles_title__ARIVF').text
-            image =soup.find('div',class_="styles_container__dR7XZ").find('img')['data-src']
-            url = soup.find('div', class_='styles_cards___qpff').find('a', class_="styles_wrapper__yaLfq").get('href')
+            variants = soup.find("div",class_="styles_cards___qpff")
+            products=variants.find_all("section")
+            i=0
+            while(products[i].find('a',class_="styles_polepos__bO53x")!=None):
+                i=i+1
+            product = products[i].find('a', class_="styles_wrapper__yaLfq").find('div', class_='styles_content__BDDGV')
+            url= products[i].find('a', class_="styles_wrapper__yaLfq").get('href')
             url = url[0:35]
+            price=products[i].find('div',class_='styles_top__HNf3a').find('p',class_='styles_price__9JZaB').find('span').text
+            name=products[i].find('h3',class_='styles_title__ARIVF').text
+            image =products[i].find('div',class_="styles_container__dR7XZ").find('img')['data-src']
+
             if not (url==last_item):
                 last_item=url
                 print(url)
