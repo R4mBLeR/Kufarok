@@ -1,11 +1,16 @@
 # Kufarok
-Telegram bot for auto monitoring Kufar.by
+Telegram bot for tracking new products by tags on the site kufar.by/Телеграм бот для отслеживания новых товаров по тэгам на сайте kufar.by
 
 **v1.0**
-- Abobus
+- Abobus/Абобус
 
 **v1.1a**
-- Add image in message
+- Added image to messages/Добавил изображение в сообщения
 
 **v1.1b**
-- fixing bugs
+- Fixing bugs/Фикс багов
+
+**v1.2**
+- Refactor code/Рефакторинг кода
+- Optimization/Оптимизация
+- Add in message state info/Добавил в сообщения информацию о городе
