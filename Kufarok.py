@@ -1,4 +1,4 @@
-import requests
+import httpx
 from bs4 import BeautifulSoup 
 import asyncio
 import logging
@@ -13,7 +13,7 @@ logging.basicConfig(level=logging.INFO)
 bot = Bot(token=config.BOT_TOKEN)
 dp = Dispatcher(bot)
 
-search_dict = {}
+search_dict = {} 
 
 @dp.message_handler(commands=['start'])
 async def start_message(message: types.message):
@@ -29,8 +29,8 @@ async def search(message : types.message):
     if (message.text=='/search'):
         await message.answer('Вы не написали тему для поиска') 
     else:
-        search_dict[message.from_id] = checking(message)
-        await search_dict[message.from_id]
+        search_dict[message.from_id] = checking(message) 
+        await search_dict[message.from_id] 
 
    
 async def checking(message):
@@ -39,9 +39,10 @@ async def checking(message):
     last_item =''
     print('[LOG:] '+tag)
     while (True):  
-        page = requests.get('https://www.kufar.by/l?cmp=0&query='+tag+'&sort=lst.d')
-        if (page.status_code==200):
-            soup = BeautifulSoup(page.text, 'html.parser')
+        async with httpx.AsyncClient() as client:
+            r = await client.get('https://www.kufar.by/l?cmp=0&query='+tag+'&sort=lst.d')   
+        if (r.status_code==200):
+            soup = BeautifulSoup(r.text, 'html.parser')
             variants = soup.find('div',class_='styles_cards___qpff')
             products=variants.find_all('section')
             i=0

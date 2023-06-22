@@ -14,3 +14,6 @@ Telegram bot for tracking new products by tags on the site kufar.by/Телегр
 - Refactor code/Рефакторинг кода
 - Optimization/Оптимизация
 - Add in message state info/Добавил в сообщения информацию о городе
+
+**v1.3**
+- This work in async, yeah\Ура, это работает в асинхроне
