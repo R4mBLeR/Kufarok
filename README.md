@@ -1,19 +1,33 @@
-# Kufarok
-Telegram bot for tracking new products by tags on the site kufar.by/Телеграм бот для отслеживания новых товаров по тэгам на сайте kufar.by
+# **Kufarok**
+## Telegram bot for tracking new products by tags on the site kufar.by
+## **Usage**
 
-**v1.0**
-- Abobus/Абобус
+* **1.** Download and unpacking archive
+* **2.** create *config.py* file and paste this code:
+```
+BOT_TOKEN="YOUR_TOKEN"
+```
+* **4.** replace *YOUR_TOKEN* with your Telegram bot API token
+* **3.** run *start.bat* file
 
-**v1.1a**
-- Added image to messages/Добавил изображение в сообщения
+P.S. Python must be installed on your computer ([Download](https://www.python.org/downloads/))
 
-**v1.1b**
-- Fixing bugs/Фикс багов
+## **Versions**
 
-**v1.2**
-- Refactor code/Рефакторинг кода
-- Optimization/Оптимизация
-- Add in message state info/Добавил в сообщения информацию о городе
+### **v1.0**
+- Abobus
 
-**v1.3**
-- This work in async, yeah\Ура, это работает в асинхроне
+### **v1.1a**
+- Added image to messages
+
+### **v1.1b**
+- Fixing bugs
+
+### **v1.2**
+- Refactor code
+- Optimization
+- Add in message state info
+
+### **v1.3**
+- This work in async, yeah
+
