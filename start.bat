@@ -1,3 +1,4 @@
 @echo off
-python Kufarok.py
+cd bot
+python main.py
 pause

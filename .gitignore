@@ -1,2 +1,4 @@
-config.py
 .venv
+/bot/config.py
+/bot/__pycache__
+/bot/handlers/__pycache__
