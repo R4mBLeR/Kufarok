@@ -2,8 +2,8 @@
 ## Telegram bot for tracking new products by tags on the site kufar.by
 ## **Usage**
 
-* **1.** Download and unpacking archive
-* **2.** Replace *YOUR_TOKEN* in config.py with your Telegram bot API token and save file
+* **1.** Download and unpacking release archive
+* **2.** Replace *YOUR_TOKEN* in \bot\config.py with your Telegram bot API token and save file
 * **3.** Run cmd as administrator in package with bot
 * **4.** Print in cmd this command:
 `pip install -r requirements.txt`
